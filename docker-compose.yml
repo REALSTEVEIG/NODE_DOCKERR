@@ -1,0 +1,12 @@
+version: "3" # specify docker-compose version
+services:
+  nginx:
+    image: nginx:stable-alpine # specify image to build container from
+    ports:
+      - "5000:80" # specify port mapping
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf # mount nginx config
+  node-app:
+    build: . # use the Dockerfile in the current directory
+    environment:
+      - PORT=3000 # container
