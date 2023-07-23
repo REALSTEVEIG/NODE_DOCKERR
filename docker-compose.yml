@@ -10,5 +10,3 @@ services:
     build: . # use the Dockerfile in the current directory
     environment:
       - PORT=3000 # container
-    env_file:
-      - .env # environment variables
