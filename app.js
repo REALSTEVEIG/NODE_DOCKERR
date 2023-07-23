@@ -16,6 +16,13 @@ console.log("redis port: ", process.env.REDIS_PORT)
 console.log("redis password: ", process.env.REDIS_PASSWORD)
 console.log("node env: ", process.env.NODE_ENV)
 
+const mongoUsername = process.env.MONGO_USERNAME;
+const mongoPassword = process.env.MONGO_PASSWORD;
+const mongoCluster = 'cluster0.k5vhuve.mongodb.net';
+const mongoDatabase = 'DOCKER_AZURE';
+
+const mongoUrl = `mongodb+srv://${mongoUsername}:${mongoPassword}@${mongoCluster}/${mongoDatabase}?retryWrites=true&w=majority`;
+
 const app = express();
 
 app.use(express.json());
@@ -45,7 +52,7 @@ app.use('/api/v1', protect, postRouter);
 const start = async () => {
   try {
     await redisClient.connect()
-    await connectDB(process.env.MONGO_URI || 'mongodb://localhost:27017/express-mongo');
+    await connectDB(mongoUrl || 'mongodb://localhost:27017/express-mongo');
     app.listen(PORT, () => {
       console.log(`Server is running on port ${PORT}`);
     });
