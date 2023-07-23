@@ -10,12 +10,6 @@ const RedisStore = require('connect-redis').default;
 const session = require('express-session');
 const protect = require('./middleware/auth');
 
-console.log("mongo uri: ", process.env.MONGO_URI)
-console.log("redis host: ", process.env.REDIS_HOST)
-console.log("redis port: ", process.env.REDIS_PORT)
-console.log("redis password: ", process.env.REDIS_PASSWORD)
-console.log("node env: ", process.env.NODE_ENV)
-
 const mongoUsername = process.env.MONGO_USERNAME;
 const mongoPassword = process.env.MONGO_PASSWORD;
 const mongoCluster = 'cluster0.k5vhuve.mongodb.net';
