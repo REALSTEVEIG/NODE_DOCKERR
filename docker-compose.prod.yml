@@ -18,3 +18,9 @@ services:
       - ./:/app
       - /app/node_modules
     command: npm start
+    environment:
+      - MONGO_URI=${MONGO_URI}
+      - REDIS_HOST=${REDIS_HOST}
+      - REDIS_PORT=${REDIS_PORT}
+      - SESSION_SECRET=${SESSION_SECRET}
+      - REDIS_PASSWORD=${REDIS_PASSWORD}
